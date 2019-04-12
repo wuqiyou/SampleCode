@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+
+<form id="contact-form" method="post">
+    <p>First Name</p>
+    <input id="FirstName" type="text" name="FirstName" placeholder="First Name" />
+    <p>Email</p>
+    <input id="Email" type="email" name="Email" placeholder="Email Address" />
+    <p>Message</p>
+    <textarea id="Message" name="Message" placeholder="Message here"></textarea>
+    <p></p>
+    <input id="submit" value="Submit" type="submit" />
+</form>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            onFormSubmit();
+        });
+    });
+
+    function onFormSubmit() {
+        alert("submitted");
+
+        $.ajax({
+            type: "post",
+            url: "/home/contact",
+            data: $("#contact-form").serialize()
+        }).done(function (result) {
+
+        }).fail(function (result) {
+
+        })
+    }
+
+</script>
